@@ -2,567 +2,859 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-<meta name="description" content="BX47ZSENTINEL sedang dalam perbaikan. Kembali sebentar lagi.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="BX47ZSENTINEL sedang dalam pemeliharaan. Kembali sebentar lagi.">
 <meta name="robots" content="noindex, nofollow">
-<title>🔧 Maintenance - BX47ZSENTINEL</title>
+<meta name="theme-color" content="#0a0e17">
+<title>Pemeliharaan — BX47ZSENTINEL</title>
 <style>
 :root {
   --bg: #0a0e17;
-  --bg-alt: #111827;
-  --bg-card: #151b28;
+  --bg-subtle: #0f1520;
+  --bg-card: #131a28;
+  --border: #1e293b;
+  --border-strong: #2a3a52;
   --text: #f1f5f9;
   --text-muted: #94a3b8;
-  --border: #1e293b;
-  --primary: #38bdf8;
-  --primary-hover: #7dd3fc;
-  --accent: #0ea5e9;
-  --ok: #22c55e;
-  --warn: #f59e0b;
-  --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", "Segoe UI", Roboto, sans-serif;
+  --text-dim: #64748b;
+  --accent: #38bdf8;
+  --accent-hover: #7dd3fc;
+  --accent-subtle: rgba(56, 189, 248, 0.1);
+  --accent-border: rgba(56, 189, 248, 0.25);
+  --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", "Helvetica Neue", "Segoe UI", Roboto, sans-serif;
+  --mono: "SF Mono", "JetBrains Mono", Menlo, Monaco, "Courier New", monospace;
 }
-* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-html, body { height: 100%; }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
 body {
   font-family: var(--font);
   background: var(--bg);
   color: var(--text);
-  line-height: 1.5;
-  font-weight: 500;
-  overflow: hidden;
+  line-height: 1.6;
+  font-weight: 400;
+  font-size: 16px;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: 24px;
+  overflow-x: hidden;
   position: relative;
 }
 
-/* Background animasi */
+/* Subtle background glow — sangat halus */
 body::before {
   content: '';
   position: fixed;
-  inset: 0;
-  background:
-    radial-gradient(circle at 20% 30%, rgba(56,189,248,0.15) 0%, transparent 50%),
-    radial-gradient(circle at 80% 70%, rgba(14,165,233,0.1) 0%, transparent 50%);
+  top: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(
+    circle,
+    rgba(56, 189, 248, 0.06) 0%,
+    transparent 60%
+  );
   pointer-events: none;
   z-index: 0;
-  animation: bgFloat 10s ease-in-out infinite;
-}
-@keyframes bgFloat {
-  0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.8; }
-  50% { transform: scale(1.05) rotate(2deg); opacity: 1; }
 }
 
-/* Grid pattern */
-body::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(56,189,248,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(56,189,248,0.03) 1px, transparent 1px);
-  background-size: 40px 40px;
-  pointer-events: none;
-  z-index: 0;
-  animation: gridMove 20s linear infinite;
-}
-@keyframes gridMove {
-  from { transform: translate(0, 0); }
-  to { transform: translate(40px, 40px); }
-}
-
+/* Container */
 .container {
   position: relative;
   z-index: 1;
-  max-width: 520px;
   width: 100%;
-  background: rgba(21, 27, 40, 0.7);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid var(--border);
-  border-radius: 24px;
-  padding: 48px 36px;
-  text-align: center;
-  box-shadow:
-    0 20px 60px rgba(0,0,0,0.5),
-    0 0 0 1px rgba(56,189,248,0.1) inset;
-  animation: cardIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-@keyframes cardIn {
-  from { opacity: 0; transform: translateY(30px) scale(0.95); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
+  max-width: 560px;
+  animation: fadeIn 0.6s ease-out;
 }
 
-/* Logo */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Header — logo + brand */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 48px;
+  padding: 0 4px;
+}
+
 .logo {
-  width: 80px;
-  height: 80px;
-  border-radius: 22px;
-  background: linear-gradient(135deg, var(--primary), var(--accent));
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--accent);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 24px;
-  color: #0a0e17;
-  font-size: 36px;
-  font-weight: 900;
-  box-shadow:
-    0 12px 32px rgba(56,189,248,0.4),
-    0 0 0 0 rgba(56,189,248,0.7);
-  animation: logoPulse 2s ease-in-out infinite;
-  position: relative;
-}
-.logo::after {
-  content: '';
-  position: absolute;
-  inset: -8px;
-  border-radius: 28px;
-  border: 2px solid var(--primary);
-  opacity: 0;
-  animation: ringPulse 2s ease-out infinite;
-}
-@keyframes logoPulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-}
-@keyframes ringPulse {
-  0% { transform: scale(1); opacity: 0.6; }
-  100% { transform: scale(1.2); opacity: 0; }
-}
-
-/* Icon gear */
-.gear {
-  font-size: 32px;
-  margin-bottom: 8px;
-  display: inline-block;
-  animation: gearSpin 4s linear infinite;
-  filter: drop-shadow(0 0 8px rgba(56,189,248,0.5));
-}
-@keyframes gearSpin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-h1 {
-  font-size: clamp(24px, 5vw, 32px);
+  color: var(--bg);
+  font-size: 18px;
   font-weight: 800;
-  letter-spacing: -1px;
-  margin-bottom: 12px;
-  background: linear-gradient(135deg, #fff 0%, var(--primary) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  letter-spacing: -0.5px;
+  flex-shrink: 0;
 }
 
-.subtitle {
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.brand-name {
   font-size: 15px;
-  color: var(--text-muted);
-  margin-bottom: 32px;
-  line-height: 1.6;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  color: var(--text);
 }
 
-/* Progress bar */
-.progress-container {
-  width: 100%;
+.brand-sub {
+  font-size: 12px;
+  color: var(--text-dim);
+  font-weight: 500;
+}
+
+/* Status badge */
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  background: var(--accent-subtle);
+  border: 1px solid var(--accent-border);
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 20px;
+  letter-spacing: 0.01em;
+}
+
+.status-dot {
+  width: 6px;
   height: 6px;
-  background: var(--bg-alt);
-  border-radius: 3px;
-  overflow: hidden;
-  margin-bottom: 12px;
-  position: relative;
-}
-.progress-bar {
-  height: 100%;
-  background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
-  background-size: 200% 100%;
-  border-radius: 3px;
-  width: 0%;
-  transition: width 0.5s ease;
-  animation: shimmer 2s linear infinite;
-}
-@keyframes shimmer {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
+  border-radius: 50%;
+  background: var(--accent);
+  animation: pulseDot 2s ease-in-out infinite;
+  flex-shrink: 0;
 }
 
-.progress-text {
-  font-size: 13px;
+@keyframes pulseDot {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(0.85);
+  }
+}
+
+/* Heading */
+h1 {
+  font-size: clamp(28px, 6vw, 40px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin-bottom: 16px;
+  color: var(--text);
+}
+
+h1 .highlight {
+  color: var(--accent);
+}
+
+.description {
+  font-size: clamp(15px, 2.5vw, 17px);
   color: var(--text-muted);
-  margin-bottom: 28px;
+  line-height: 1.65;
+  margin-bottom: 40px;
+  max-width: 480px;
+}
+
+/* Progress section */
+.progress-section {
+  margin-bottom: 40px;
+}
+
+.progress-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: baseline;
+  margin-bottom: 10px;
 }
-.progress-text span:first-child { font-weight: 700; color: var(--primary); }
 
-/* Stats */
-.stats {
+.progress-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.01em;
+}
+
+.progress-value {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.progress-track {
+  width: 100%;
+  height: 4px;
+  background: var(--bg-subtle);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--accent);
+  border-radius: 2px;
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Info grid — 3 kolom rapi */
+.info-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 12px;
-  margin-bottom: 28px;
-}
-.stat {
-  background: var(--bg-alt);
+  margin-bottom: 40px;
+  padding: 20px;
+  background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: 14px;
-  padding: 14px 8px;
-  transition: all 0.3s;
-}
-.stat:hover {
-  border-color: var(--primary);
-  transform: translateY(-2px);
-}
-.stat .num {
-  font-size: 20px;
-  font-weight: 800;
-  color: var(--primary);
-  margin-bottom: 4px;
-  font-variant-numeric: tabular-nums;
-}
-.stat .label {
-  font-size: 10px;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  font-weight: 700;
 }
 
-/* Info box */
-.info-box {
-  background: rgba(56,189,248,0.08);
-  border: 1px solid rgba(56,189,248,0.2);
-  border-radius: 14px;
-  padding: 16px;
-  margin-bottom: 24px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  text-align: left;
+.info-item {
+  text-align: center;
+  padding: 4px 0;
 }
-.info-box .icon {
-  font-size: 22px;
-  flex-shrink: 0;
+
+.info-item + .info-item {
+  border-left: 1px solid var(--border);
 }
-.info-box .text {
-  font-size: 13px;
-  color: var(--text-muted);
-  line-height: 1.5;
-}
-.info-box .text strong {
+
+.info-value {
+  font-family: var(--mono);
+  font-size: clamp(18px, 3.5vw, 22px);
+  font-weight: 700;
   color: var(--text);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+
+.info-value.accent {
+  color: var(--accent);
+}
+
+.info-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* Notice box */
+.notice {
+  display: flex;
+  gap: 12px;
+  padding: 16px;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  margin-bottom: 32px;
+  align-items: flex-start;
+}
+
+.notice-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: var(--accent);
+  margin-top: 1px;
+}
+
+.notice-text {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.notice-text strong {
+  color: var(--text);
+  font-weight: 600;
   display: block;
   margin-bottom: 2px;
-  font-weight: 700;
 }
 
-/* Buttons */
+/* Actions */
 .actions {
   display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 40px;
 }
+
 .btn {
   flex: 1;
-  min-width: 140px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
   padding: 14px 20px;
-  border-radius: 12px;
-  font-size: 14px;
-  font-weight: 700;
-  text-decoration: none;
-  border: none;
-  cursor: pointer;
-  transition: all 0.25s;
+  border-radius: 10px;
+  font-size: 14.5px;
+  font-weight: 600;
   font-family: inherit;
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  letter-spacing: -0.01em;
+  min-height: 48px;
+  user-select: none;
+  -webkit-user-select: none;
 }
+
+.btn svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
 .btn-primary {
-  background: var(--primary);
-  color: #0a0e17;
-  box-shadow: 0 4px 14px rgba(56,189,248,0.3);
+  background: var(--accent);
+  color: var(--bg);
+  border-color: var(--accent);
 }
+
 .btn-primary:hover {
-  background: var(--primary-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(56,189,248,0.5);
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
 }
-.btn-outline {
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+.btn-secondary {
   background: transparent;
   color: var(--text);
-  border: 1.5px solid var(--border);
+  border-color: var(--border-strong);
 }
-.btn-outline:hover {
-  border-color: var(--primary);
-  color: var(--primary);
+
+.btn-secondary:hover {
+  background: var(--bg-card);
+  border-color: var(--accent-border);
+  color: var(--accent);
 }
-.btn:active { transform: scale(0.98); }
+
+.btn-secondary:active {
+  transform: scale(0.98);
+}
 
 /* Footer */
 .footer {
-  margin-top: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding-top: 24px;
   border-top: 1px solid var(--border);
-  font-size: 12px;
-  color: var(--text-muted);
-  line-height: 1.6;
+  font-size: 12.5px;
+  color: var(--text-dim);
+  gap: 16px;
+  flex-wrap: wrap;
 }
-.footer .brand {
-  font-weight: 800;
-  color: var(--text);
-  font-size: 13px;
-  margin-bottom: 4px;
-}
-.footer a {
-  color: var(--primary);
-  text-decoration: none;
-  font-weight: 700;
-}
-.footer a:hover { text-decoration: underline; }
 
-/* Status indicator */
-.status {
-  display: inline-flex;
+.footer-left {
+  display: flex;
   align-items: center;
   gap: 8px;
-  background: rgba(245,158,11,0.1);
-  border: 1px solid rgba(245,158,11,0.3);
-  border-radius: 20px;
-  padding: 6px 14px;
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--warn);
-  margin-bottom: 24px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-.status .dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--warn);
-  animation: blink 1.5s ease-in-out infinite;
-}
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.3; }
 }
 
-/* Floating particles */
-.particle {
-  position: fixed;
-  width: 4px;
-  height: 4px;
-  background: var(--primary);
+.footer-dot {
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
-  opacity: 0.4;
-  pointer-events: none;
-  z-index: 0;
+  background: #22c55e;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.2);
 }
 
-/* Responsive */
-@media (max-width: 480px) {
-  .container { padding: 36px 24px; border-radius: 20px; }
-  .logo { width: 64px; height: 64px; font-size: 28px; border-radius: 18px; }
-  .gear { font-size: 26px; }
-  .stats { gap: 8px; }
-  .stat { padding: 12px 6px; }
-  .stat .num { font-size: 18px; }
-  .stat .label { font-size: 9px; }
-  .btn { min-width: 100%; }
-  .actions { flex-direction: column; }
-  .info-box { padding: 14px; }
-  .info-box .text { font-size: 12px; }
+.footer-dot.offline {
+  background: #ef4444;
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.2);
+}
+
+.footer-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.15s;
+}
+
+.footer-link:hover {
+  color: var(--accent);
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 640px) {
+  body {
+    padding: 20px 16px;
+    align-items: flex-start;
+    padding-top: 48px;
+  }
+  
+  .container {
+    max-width: 100%;
+  }
+  
+  .header {
+    margin-bottom: 36px;
+  }
+  
+  .description {
+    margin-bottom: 32px;
+  }
+  
+  .progress-section,
+  .info-grid,
+  .notice,
+  .actions {
+    margin-bottom: 28px;
+  }
+  
+  .info-grid {
+    padding: 16px;
+    gap: 8px;
+  }
+  
+  .info-value {
+    font-size: 17px;
+  }
+  
+  .info-label {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 420px) {
+  body {
+    padding: 16px 12px;
+    padding-top: 32px;
+  }
+  
+  .header {
+    margin-bottom: 28px;
+  }
+  
+  .logo {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+    border-radius: 9px;
+  }
+  
+  .brand-name {
+    font-size: 14px;
+  }
+  
+  .brand-sub {
+    font-size: 11px;
+  }
+  
+  h1 {
+    font-size: 26px;
+  }
+  
+  .description {
+    font-size: 14.5px;
+    margin-bottom: 28px;
+  }
+  
+  .info-grid {
+    padding: 14px 10px;
+  }
+  
+  .info-value {
+    font-size: 15px;
+  }
+  
+  .info-label {
+    font-size: 9px;
+    letter-spacing: 0.04em;
+  }
+  
+  .actions {
+    flex-direction: column;
+  }
+  
+  .btn {
+    width: 100%;
+  }
+  
+  .footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+}
+
+/* Landscape HP */
+@media (max-height: 600px) and (orientation: landscape) {
+  body {
+    align-items: center;
+    padding: 16px;
+  }
+  
+  .header {
+    margin-bottom: 20px;
+  }
+  
+  .description {
+    margin-bottom: 20px;
+  }
+  
+  .progress-section,
+  .info-grid,
+  .notice,
+  .actions {
+    margin-bottom: 16px;
+  }
+  
+  h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+}
+
+/* Tablet */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .container {
+    max-width: 580px;
+  }
+}
+
+/* Desktop besar */
+@media (min-width: 1440px) {
+  .container {
+    max-width: 600px;
+  }
+  
+  h1 {
+    font-size: 44px;
+  }
+}
+
+/* Dark mode auto (kalau device light mode, tetap gelap elegan) */
+@media (prefers-color-scheme: light) {
+  /* Website maintenance tetap dark — profesional */
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Safe area untuk iPhone notch */
+@supports (padding: max(0px)) {
+  body {
+    padding-left: max(20px, env(safe-area-inset-left));
+    padding-right: max(20px, env(safe-area-inset-right));
+    padding-top: max(24px, env(safe-area-inset-top));
+    padding-bottom: max(24px, env(safe-area-inset-bottom));
+  }
+}
+
+/* Prevent zoom on double tap iOS */
+@media (hover: none) and (pointer: coarse) {
+  .btn {
+    touch-action: manipulation;
+  }
 }
 </style>
 </head>
 <body>
 
 <div class="container">
-  <div class="logo">B</div>
-  <div class="gear">⚙️</div>
-  <h1>Sedang Maintenance</h1>
-  <p class="subtitle">
-    Website BX47ZSENTINEL sedang dalam perbaikan.<br>
-    Kami akan kembali sebentar lagi.
+
+  <!-- Header -->
+  <header class="header">
+    <div class="logo">B</div>
+    <div class="brand">
+      <div class="brand-name">BX47ZSENTINEL</div>
+      <div class="brand-sub">Cyber Security & Web Development</div>
+    </div>
+  </header>
+
+  <!-- Status badge -->
+  <div class="status">
+    <span class="status-dot"></span>
+    <span>Dalam Pemeliharaan</span>
+  </div>
+
+  <!-- Heading -->
+  <h1>
+    Kami sedang <span class="highlight">memperbaiki</span> sesuatu yang penting.
+  </h1>
+
+  <p class="description">
+    Website akan kembali online dalam waktu dekat. Terima kasih atas kesabaran Anda.
   </p>
 
-  <div class="status">
-    <span class="dot"></span>
-    <span>Under Maintenance</span>
-  </div>
-
-  <div class="progress-container">
-    <div class="progress-bar" id="progressBar"></div>
-  </div>
-  <div class="progress-text">
-    <span id="progressText">Memuat ulang...</span>
-    <span id="progressPercent">0%</span>
-  </div>
-
-  <div class="stats">
-    <div class="stat">
-      <div class="num" id="countdown">30</div>
-      <div class="label">Detik Lagi</div>
+  <!-- Progress -->
+  <div class="progress-section">
+    <div class="progress-header">
+      <span class="progress-label" id="progressLabel">Memeriksa status server</span>
+      <span class="progress-value" id="progressValue">0%</span>
     </div>
-    <div class="stat">
-      <div class="num" id="elapsed">0</div>
-      <div class="label">Menit Down</div>
-    </div>
-    <div class="stat">
-      <div class="num" id="visitors">—</div>
-      <div class="label">Status</div>
+    <div class="progress-track">
+      <div class="progress-fill" id="progressFill"></div>
     </div>
   </div>
 
-  <div class="info-box">
-    <div class="icon">📢</div>
-    <div class="text">
-      <strong>Info Maintenance</strong>
-      Kami sedang meningkatkan keamanan dan performa website. Mohon maaf atas ketidaknyamanannya.
+  <!-- Info grid -->
+  <div class="info-grid">
+    <div class="info-item">
+      <div class="info-value accent" id="countdownValue">30</div>
+      <div class="info-label">Detik</div>
+    </div>
+    <div class="info-item">
+      <div class="info-value" id="elapsedValue">0</div>
+      <div class="info-label">Menit</div>
+    </div>
+    <div class="info-item">
+      <div class="info-value" id="attemptValue">1</div>
+      <div class="info-label">Percobaan</div>
     </div>
   </div>
 
+  <!-- Notice -->
+  <div class="notice">
+    <svg class="notice-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10"/>
+      <line x1="12" y1="16" x2="12" y2="12"/>
+      <line x1="12" y1="8" x2="12.01" y2="8"/>
+    </svg>
+    <div class="notice-text">
+      <strong>Peningkatan Keamanan</strong>
+      Kami sedang melakukan pembaruan sistem untuk meningkatkan keamanan dan performa layanan.
+    </div>
+  </div>
+
+  <!-- Actions -->
   <div class="actions">
-    <button class="btn btn-primary" onclick="refreshNow()">
-      🔄 Refresh Sekarang
+    <button class="btn btn-primary" onclick="refreshNow()" id="refreshBtn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"/>
+        <path d="M21 3v5h-5"/>
+      </svg>
+      <span>Coba Lagi</span>
     </button>
     <a href="https://wa.me/6287890768114?text=Halo%20BX47ZSENTINEL%2C%20saya%20lihat%20website%20sedang%20maintenance." 
-       target="_blank" class="btn btn-outline">
-      💬 Hubungi Kami
+       target="_blank" rel="noopener" class="btn btn-secondary">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+      </svg>
+      <span>Hubungi Kami</span>
     </a>
   </div>
 
-  <div class="footer">
-    <div class="brand">BX47ZSENTINEL</div>
-    <p>Cyber Security & Web Development</p>
-    <p style="margin-top:8px;">
-      Estimasi selesai: <a href="#" onclick="return false;" id="eta">Menghitung...</a>
-    </p>
-  </div>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-left">
+      <span class="footer-dot" id="connectionDot"></span>
+      <span id="connectionText">Terhubung</span>
+    </div>
+    <div>
+      <a href="mailto:support@bx47zsentinel.com" class="footer-link">support@bx47zsentinel.com</a>
+    </div>
+  </footer>
+
 </div>
 
 <script>
-// ============ COUNTDOWN & AUTO REFRESH ============
-let countdown = 30;
-let elapsed = 0;
-const totalCountdown = 30;
+'use strict';
 
-const countdownEl = document.getElementById('countdown');
-const elapsedEl = document.getElementById('elapsed');
-const progressBar = document.getElementById('progressBar');
-const progressText = document.getElementById('progressText');
-const progressPercent = document.getElementById('progressPercent');
-const etaEl = document.getElementById('eta');
+// ============ CONFIG ============
+const CONFIG = {
+  refreshInterval: 30,      // detik
+  autoRefresh: true,        // auto refresh
+};
 
-// Update countdown tiap 1 detik
-setInterval(() => {
-  countdown--;
-  elapsed++;
-  
-  if (countdown < 0) countdown = totalCountdown;
-  
-  countdownEl.textContent = countdown;
-  elapsedEl.textContent = Math.floor(elapsed / 60);
-  
-  // Progress bar
-  const progress = ((totalCountdown - countdown) / totalCountdown) * 100;
-  progressBar.style.width = progress + '%';
-  progressPercent.textContent = Math.round(progress) + '%';
-  
-  if (countdown > 15) {
-    progressText.textContent = 'Memuat ulang...';
-  } else if (countdown > 5) {
-    progressText.textContent = 'Menyiapkan halaman...';
-  } else {
-    progressText.textContent = 'Refresh otomatis...';
+// ============ STATE ============
+const state = {
+  countdown: CONFIG.refreshInterval,
+  elapsed: 0,
+  attempts: 1,
+  startTime: Date.now(),
+};
+
+// ============ DOM ============
+const $ = (id) => document.getElementById(id);
+
+const els = {
+  countdownValue: $('countdownValue'),
+  elapsedValue: $('elapsedValue'),
+  attemptValue: $('attemptValue'),
+  progressFill: $('progressFill'),
+  progressValue: $('progressValue'),
+  progressLabel: $('progressLabel'),
+  refreshBtn: $('refreshBtn'),
+  connectionDot: $('connectionDot'),
+  connectionText: $('connectionText'),
+};
+
+// ============ PROGRESS LABELS ============
+const progressMessages = [
+  { threshold: 0,   text: 'Memeriksa status server' },
+  { threshold: 25,  text: 'Memuat konfigurasi' },
+  { threshold: 50,  text: 'Menyiapkan halaman' },
+  { threshold: 75,  text: 'Hampir selesai' },
+  { threshold: 95,  text: 'Menyegarkan...' },
+];
+
+function getProgressLabel(percent) {
+  let label = progressMessages[0].text;
+  for (const msg of progressMessages) {
+    if (percent >= msg.threshold) label = msg.text;
   }
-  
-  // Auto refresh
-  if (countdown === 0) {
-    location.reload();
-  }
-}, 1000);
-
-// ETA
-function updateETA() {
-  const now = new Date();
-  const eta = new Date(now.getTime() + 30 * 1000);
-  etaEl.textContent = eta.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+  return label;
 }
-updateETA();
-setInterval(updateETA, 30000);
+
+// ============ UPDATE UI ============
+function updateUI() {
+  const total = CONFIG.refreshInterval;
+  const remaining = Math.max(0, state.countdown);
+  const percent = Math.min(100, Math.round(((total - remaining) / total) * 100));
+
+  // Countdown
+  els.countdownValue.textContent = remaining;
+  els.elapsedValue.textContent = Math.floor(state.elapsed / 60);
+  els.attemptValue.textContent = state.attempts;
+
+  // Progress
+  els.progressFill.style.width = percent + '%';
+  els.progressValue.textContent = percent + '%';
+  els.progressLabel.textContent = getProgressLabel(percent);
+}
+
+// ============ TICK ============
+function tick() {
+  state.countdown--;
+  state.elapsed++;
+
+  if (state.countdown < 0) {
+    if (CONFIG.autoRefresh) {
+      state.attempts++;
+      state.countdown = CONFIG.refreshInterval;
+      state.elapsed = 0;
+      // Simulasi reload — ganti dengan location.reload() kalau production
+      // location.reload();
+      
+      // Fallback: kalau nggak reload, reset aja
+      updateUI();
+      return;
+    } else {
+      state.countdown = 0;
+    }
+  }
+
+  updateUI();
+}
 
 // ============ REFRESH MANUAL ============
-function refreshNow() {
-  const btn = event.target;
-  btn.textContent = '⏳ Memuat...';
-  btn.disabled = true;
-  setTimeout(() => location.reload(), 500);
-}
-
-// ============ FLOATING PARTICLES ============
-function createParticle() {
-  const p = document.createElement('div');
-  p.className = 'particle';
-  p.style.left = Math.random() * 100 + '%';
-  p.style.top = '100%';
-  p.style.background = Math.random() > 0.5 ? '#38bdf8' : '#0ea5e9';
-  p.style.animation = `floatUp ${5 + Math.random() * 5}s linear`;
-  document.body.appendChild(p);
+window.refreshNow = function() {
+  els.refreshBtn.disabled = true;
+  els.refreshBtn.style.opacity = '0.6';
+  els.refreshBtn.querySelector('span').textContent = 'Memuat...';
   
-  setTimeout(() => p.remove(), 10000);
-}
+  state.attempts++;
+  state.countdown = CONFIG.refreshInterval;
+  state.elapsed = 0;
+  
+  setTimeout(() => {
+    // Ganti dengan location.reload() di production
+    // location.reload();
+    
+    // Simulasi
+    els.refreshBtn.disabled = false;
+    els.refreshBtn.style.opacity = '1';
+    els.refreshBtn.querySelector('span').textContent = 'Coba Lagi';
+    updateUI();
+  }, 800);
+};
 
-// CSS animasi untuk particle
-const style = document.createElement('style');
-style.textContent = `
-  @keyframes floatUp {
-    from { transform: translateY(0) scale(1); opacity: 0; }
-    10% { opacity: 0.6; }
-    90% { opacity: 0.6; }
-    to { transform: translateY(-100vh) scale(0); opacity: 0; }
+// ============ CONNECTION STATUS ============
+function updateConnection() {
+  if (navigator.onLine) {
+    els.connectionDot.classList.remove('offline');
+    els.connectionText.textContent = 'Terhubung';
+  } else {
+    els.connectionDot.classList.add('offline');
+    els.connectionText.textContent = 'Tidak terhubung';
   }
-`;
-document.head.appendChild(style);
-
-// Bikin particle tiap 500ms
-setInterval(createParticle, 500);
-
-// Bikin 3 particle pertama
-for (let i = 0; i < 3; i++) {
-  setTimeout(createParticle, i * 200);
 }
 
-// ============ CEK KONEKSI ============
-window.addEventListener('online', () => {
-  document.getElementById('visitors').textContent = 'Online';
-  document.getElementById('visitors').style.color = '#22c55e';
-});
-window.addEventListener('offline', () => {
-  document.getElementById('visitors').textContent = 'Offline';
-  document.getElementById('visitors').style.color = '#ef4444';
-});
+window.addEventListener('online', updateConnection);
+window.addEventListener('offline', updateConnection);
 
-if (navigator.onLine) {
-  document.getElementById('visitors').textContent = 'Online';
-  document.getElementById('visitors').style.color = '#22c55e';
-} else {
-  document.getElementById('visitors').textContent = 'Offline';
-  document.getElementById('visitors').style.color = '#ef4444';
-}
-
-// ============ PREVENT ZOOM ON DOUBLE TAP ============
+// ============ PREVENT DOUBLE TAP ZOOM ============
 let lastTouchEnd = 0;
 document.addEventListener('touchend', (e) => {
   const now = Date.now();
-  if (now - lastTouchEnd <= 300) e.preventDefault();
+  if (now - lastTouchEnd <= 300) {
+    e.preventDefault();
+  }
   lastTouchEnd = now;
-}, false);
+}, { passive: false });
+
+// ============ INIT ============
+function init() {
+  updateUI();
+  updateConnection();
+  setInterval(tick, 1000);
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}
 </script>
+
 </body>
 </html>
